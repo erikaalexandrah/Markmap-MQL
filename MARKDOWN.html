@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.8/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.8/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.8/dist/index.js"></script><script>(r => {
+              setTimeout(r);
+            })(function renderToolbar() {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"Operadores en MQL según tipo de dato","children":[{"content":"String","children":[{"content":"Comparación:","children":[{"content":"<code>$eq</code> → Igual a","children":[],"payload":{"tag":"li","lines":"3,4"}},{"content":"<code>$ne</code> → Diferente de","children":[],"payload":{"tag":"li","lines":"4,5"}},{"content":"<code>$regex</code> → Expresión regular (con <code>$options: 'i'</code> para insensibilidad a mayúsculas)","children":[],"payload":{"tag":"li","lines":"5,6"}},{"content":"<code>collation</code> → Comparación insensible a mayúsculas y minúsculas","children":[],"payload":{"tag":"li","lines":"6,7"}}],"payload":{"tag":"li","lines":"2,7"}},{"content":"Búsqueda en texto:","children":[{"content":"<code>$text</code> → Búsqueda en índices de texto (<code>$search</code>)","children":[],"payload":{"tag":"li","lines":"8,9"}}],"payload":{"tag":"li","lines":"7,9"}},{"content":"Coincidencia de patrones:","children":[{"content":"<code>$regex</code> → Buscar texto dentro de un string","children":[],"payload":{"tag":"li","lines":"10,12"}}],"payload":{"tag":"li","lines":"9,12"}}],"payload":{"tag":"h2","lines":"1,2"}},{"content":"Array","children":[{"content":"Comparación directa:","children":[{"content":"<code>$eq</code> → Coincidencia exacta con todo el array","children":[],"payload":{"tag":"li","lines":"14,15"}},{"content":"<code>$ne</code> → No coincida con un array exacto","children":[],"payload":{"tag":"li","lines":"15,16"}}],"payload":{"tag":"li","lines":"13,16"}},{"content":"Elemento dentro del array:","children":[{"content":"<code>$in</code> → Alguno de los valores está en el array","children":[],"payload":{"tag":"li","lines":"17,18"}},{"content":"<code>$nin</code> → Ninguno de los valores está en el array","children":[],"payload":{"tag":"li","lines":"18,19"}}],"payload":{"tag":"li","lines":"16,19"}},{"content":"Elemento cumple condición:","children":[{"content":"<code>$all</code> → Todos los elementos deben coincidir con un conjunto de valores","children":[],"payload":{"tag":"li","lines":"20,21"}},{"content":"<code>$size</code> → Comparar tamaño del array","children":[],"payload":{"tag":"li","lines":"21,22"}}],"payload":{"tag":"li","lines":"19,22"}},{"content":"Operadores de evaluación:","children":[{"content":"<code>$elemMatch</code> → Evalúa si al menos un elemento del array cumple con varias condiciones","children":[],"payload":{"tag":"li","lines":"23,25"}}],"payload":{"tag":"li","lines":"22,25"}}],"payload":{"tag":"h2","lines":"12,13"}},{"content":"Array con Documentos","children":[{"content":"Buscar documentos dentro de un array:","children":[{"content":"<code>$elemMatch</code> → Evalúa si <strong>al menos un documento</strong> cumple con múltiples condiciones","children":[],"payload":{"tag":"li","lines":"27,28"}},{"content":"<code>$in</code> → Evalúa si un documento específico está en la lista","children":[],"payload":{"tag":"li","lines":"28,29"}},{"content":"<code>$size</code> → Verifica cuántos documentos hay en el array","children":[],"payload":{"tag":"li","lines":"29,30"}},{"content":"<code>$all</code> → Todos los documentos deben cumplir una condición","children":[],"payload":{"tag":"li","lines":"30,32"}}],"payload":{"tag":"li","lines":"26,32"}}],"payload":{"tag":"h2","lines":"25,26"}},{"content":"Numéricos","children":[{"content":"Comparación:","children":[{"content":"<code>$eq</code> → Igual a","children":[],"payload":{"tag":"li","lines":"34,35"}},{"content":"<code>$ne</code> → Diferente de","children":[],"payload":{"tag":"li","lines":"35,36"}},{"content":"<code>$gt</code> → Mayor que","children":[],"payload":{"tag":"li","lines":"36,37"}},{"content":"<code>$gte</code> → Mayor o igual que","children":[],"payload":{"tag":"li","lines":"37,38"}},{"content":"<code>$lt</code> → Menor que","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"<code>$lte</code> → Menor o igual que","children":[],"payload":{"tag":"li","lines":"39,40"}}],"payload":{"tag":"li","lines":"33,40"}},{"content":"Rango de valores:","children":[{"content":"<code>$between</code> (No nativo, pero se puede simular con <code>$gte</code> y <code>$lte</code>)","children":[],"payload":{"tag":"li","lines":"41,43"}}],"payload":{"tag":"li","lines":"40,43"}}],"payload":{"tag":"h2","lines":"32,33"}},{"content":"Booleanos","children":[{"content":"Comparación:","children":[{"content":"<code>$eq</code> → <code>true</code> o <code>false</code>","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"<code>$ne</code> → No igual a <code>true</code> o <code>false</code>","children":[],"payload":{"tag":"li","lines":"46,48"}}],"payload":{"tag":"li","lines":"44,48"}}],"payload":{"tag":"h2","lines":"43,44"}},{"content":"Fechas","children":[{"content":"Comparación:","children":[{"content":"<code>$eq</code> → Igual a una fecha específica","children":[],"payload":{"tag":"li","lines":"50,51"}},{"content":"<code>$ne</code> → Diferente de una fecha","children":[],"payload":{"tag":"li","lines":"51,52"}},{"content":"<code>$gt</code>, <code>$gte</code> → Mayor o igual que una fecha","children":[],"payload":{"tag":"li","lines":"52,53"}},{"content":"<code>$lt</code>, <code>$lte</code> → Menor o igual que una fecha","children":[],"payload":{"tag":"li","lines":"53,54"}}],"payload":{"tag":"li","lines":"49,54"}},{"content":"Rango de fechas:","children":[{"content":"<code>$gte</code> y <code>$lte</code> → Buscar entre un rango de fechas","children":[],"payload":{"tag":"li","lines":"55,57"}}],"payload":{"tag":"li","lines":"54,57"}}],"payload":{"tag":"h2","lines":"48,49"}},{"content":"Valores Nulos","children":[{"content":"Comparación:","children":[{"content":"<code>$exists: true/false</code> → Verifica si un campo existe o no","children":[],"payload":{"tag":"li","lines":"59,60"}},{"content":"<code>$type: \"null\"</code> → Verifica si el valor es <code>null</code>","children":[],"payload":{"tag":"li","lines":"60,61"}}],"payload":{"tag":"li","lines":"58,61"}}],"payload":{"tag":"h2","lines":"57,58"}}],"payload":{"tag":"h1","lines":"0,1"}},{})</script>
+</body>
+</html>
